@@ -1,35 +1,71 @@
-window.onload = function() {
+'use strict';
+
+const main = () => {
   const imageWrapper = document.getElementById('imageWrapper');
   const btnGetPhotos = document.getElementById('getPhotos');
-  const url = `https://source.unsplash.com/random`;
+  const url = `https://picsum.photos/600/500/?random`;
 
-  if(!!window.Worker) {
-    const worker = new Worker("js/worker.js");
-    const worker2 = new Worker("js/worker.js");
-    const worker3 = new Worker("js/worker.js");
+  const worker = new Worker("js/worker.js");
+  const worker2 = new Worker("js/worker.js");
+  const worker3 = new Worker("js/worker.js");
 
-    btnGetPhotos.addEventListener('click', function() {
-      worker.postMessage(url);
-      worker2.postMessage(url);
-      worker3.postMessage(url);
-    });
+  const getPhotoWorker = () => worker.postMessage(url);
+  const getPhotoWorker2 = () => worker2.postMessage(url);
+  const getPhotoWorker3 = () => worker3.postMessage(url);
 
-    worker.addEventListener('message', function({data}) {
-      const img = document.createElement('img');
-      img.src = data;
-      imageWrapper.appendChild(img);
-    });
+  const countPhotos = 47;
+  let counter = 0;
 
-    worker2.addEventListener('message', function({data}) {
-      const img = document.createElement('img');
-      img.src = data;
-      imageWrapper.appendChild(img);
-    });
+  btnGetPhotos.addEventListener('click', function() {
+    getPhotoWorker();
+    getPhotoWorker2();
+    getPhotoWorker3();
 
-    worker3.addEventListener('message', function({data}) {
-      const img = document.createElement('img');
-      img.src = data;
-      imageWrapper.appendChild(img);
-    });
-  }
+    const timer = setInterval(getPhotoWorker, 1000);
+    const timer2 = setInterval(getPhotoWorker2, 1000);
+    const timer3 = setInterval(getPhotoWorker3, 1000);
+
+    setTimeout(() => {
+      clearInterval(timer);
+      clearInterval(timer2);
+      clearInterval(timer3);
+    }, countPhotos * 1000);
+  });
+
+  worker.addEventListener('message', function({data}) {
+    counter = counter + 1;
+    if(counter > countPhotos) {
+      worker.terminate()
+    }
+
+    const img = document.createElement('img');
+    img.src = data;
+    imageWrapper.appendChild(img);
+  });
+
+  worker2.addEventListener('message', function({data}) {
+    counter = counter + 1;
+    if(counter > countPhotos) {
+      worker2.terminate()
+    }
+
+    const img = document.createElement('img');
+    img.src = data;
+    imageWrapper.appendChild(img);
+  });
+
+  worker3.addEventListener('message', function({data}) {
+    counter = counter + 1;
+    if(counter > countPhotos) {
+      worker3.terminate()
+    }
+
+    const img = document.createElement('img');
+    img.src = data;
+    imageWrapper.appendChild(img);
+  });
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  main();
+});
