@@ -1,6 +1,5 @@
 self.addEventListener('message', function({data}) {
   fetch(data)
-    .then(res => res.json())
-    .then(data => postMessage(data))
+    .then(res => postMessage(res.url))
     .catch(error => console.error(error))
 });

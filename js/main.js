@@ -1,7 +1,7 @@
 window.onload = function() {
   const imageWrapper = document.getElementById('imageWrapper');
   const btnGetPhotos = document.getElementById('getPhotos');
-  const url = `https://api.unsplash.com/photos/random/?client_id=50c4ae62503d9e1a2cdfe95159d0b512a1d0c70b7e2f6424ea1bb509de9ec3a5`;
+  const url = `https://source.unsplash.com/random`;
 
   if(!!window.Worker) {
     const worker = new Worker("js/worker.js");
@@ -16,23 +16,20 @@ window.onload = function() {
 
     worker.addEventListener('message', function({data}) {
       const img = document.createElement('img');
-      img.src = data.urls.regular;
+      img.src = data;
       imageWrapper.appendChild(img);
-      console.log('1');
     });
 
     worker2.addEventListener('message', function({data}) {
       const img = document.createElement('img');
-      img.src = data.urls.regular;
+      img.src = data;
       imageWrapper.appendChild(img);
-      console.log('2');
     });
 
     worker3.addEventListener('message', function({data}) {
       const img = document.createElement('img');
-      img.src = data.urls.regular;
+      img.src = data;
       imageWrapper.appendChild(img);
-      console.log('3');
     });
   }
 };
