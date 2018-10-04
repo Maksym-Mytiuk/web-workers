@@ -5,9 +5,9 @@ const main = () => {
   const btnGetPhotos = document.getElementById('getPhotos');
   const url = `https://picsum.photos/600/500/?random`;
 
-  const worker = new Worker("js/worker.js");
-  const worker2 = new Worker("js/worker.js");
-  const worker3 = new Worker("js/worker.js");
+  const worker = new Worker("js/modules/worker.js");
+  const worker2 = new Worker("js/modules/worker.js");
+  const worker3 = new Worker("js/modules/worker.js");
 
   const getPhotoWorker = () => worker.postMessage(url);
   const getPhotoWorker2 = () => worker2.postMessage(url);
