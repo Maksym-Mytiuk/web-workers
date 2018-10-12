@@ -1,8 +1,11 @@
-async function request(url) {
-  const response = await fetch(url);
-  postMessage(response.url);
-}
+const request = async (url) => {
+  try {
+    const response = await fetch(url);
+    postMessage(response.url);
+  } catch (err) {
+    console.error(err);
+    self.close();
+  }
+};
 
-self.addEventListener('message', function({data}) {
-  request(data);
-});
+self.addEventListener('message', ({data}) => request(data));
