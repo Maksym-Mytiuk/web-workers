@@ -8,7 +8,7 @@ class CreateWorker {
   constructor(url = 'https://picsum.photos/500/500/?random', count = 1) {
     this.url = url;
     this.count = count;
-    this.workers = []; //rename
+    this.workers = [];
     
     this.addWorkers();
     this.sendMassage();

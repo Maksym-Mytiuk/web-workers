@@ -10,7 +10,7 @@ body {
     margin: 25px auto;
 }
 
-#imageWrapper {
+.img-wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
