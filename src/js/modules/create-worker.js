@@ -1,8 +1,8 @@
-const path = './js/modules/worker.js';
+const WORKER_PATH = './src/js/modules/worker.js';
 
 class CreateWorker {
   static pathToWorker() {
-    return path;
+    return WORKER_PATH;
   }
   
   constructor(url = 'https://picsum.photos/500/500/?random', count = 1) {
