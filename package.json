@@ -1,0 +1,25 @@
+{
+  "name": "web-workers",
+  "version": "1.0.0",
+  "description": "Web Workers",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maksym-Mytiuk/web-workers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maksym-Mytiuk/web-workers/issues"
+  },
+  "homepage": "https://github.com/Maksym-Mytiuk/web-workers#readme",
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
