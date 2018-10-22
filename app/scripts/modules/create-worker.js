@@ -1,9 +1,6 @@
-const WORKER_PATH = './app/scripts/modules/worker.js';
+import Worker from './image.worker.js'
 
 class CreateWorker {
-  static pathToWorker() {
-    return WORKER_PATH;
-  }
   
   constructor(url = 'https://picsum.photos/500/500/?random', count = 3) {
     this.url = url;
@@ -16,7 +13,7 @@ class CreateWorker {
   
   addWorkers() {
     for(let i = 0; i < this.count; i++) {
-      const worker = new Worker(CreateWorker.pathToWorker());
+      const worker = new Worker();
       this.workers.push(worker);
     }
   }

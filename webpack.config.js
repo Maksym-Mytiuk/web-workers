@@ -10,8 +10,7 @@ const config = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist'
+    path: path.resolve(__dirname, './dist')
   },
   module: {
     rules: [
@@ -23,21 +22,25 @@ const config = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract(
           {
-            use: ['css-loader', 'sass-loader']
+            use: ['css-loader', 'postcss-loader', 'sass-loader']
           })
+      },
+      {
+        test: /\.worker\.js$/,
+        use: {loader: 'worker-loader'}
       }
     ]
   },
   devServer: {
-    overlay: true
+    overlay: true,
+    contentBase: path.join(__dirname, '/dist/index.html')
   },
   plugins: [
     new ExtractTextPlugin("main.css"),
     new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: './app/index.html'
-    })
+      template: 'app/index.html',
+    }),
+    
   ]
 };
 
