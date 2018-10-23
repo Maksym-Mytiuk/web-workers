@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const config = {
   entry: {
@@ -22,7 +23,20 @@ const config = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract(
           {
-            use: ['css-loader', 'postcss-loader', 'sass-loader']
+            use: [
+              {
+                loader: 'css-loader',
+                options: {sourceMap: true}
+              },
+              {
+                loader: 'postcss-loader',
+                options: {sourceMap: true}
+              },
+              {
+                loader: 'sass-loader',
+                options: {sourceMap: true}
+              }
+            ]
           })
       },
       {
@@ -36,11 +50,9 @@ const config = {
     contentBase: path.join(__dirname, '/dist/index.html')
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin("main.css"),
-    new HtmlWebpackPlugin({
-      template: 'app/index.html',
-    }),
-    
+    new HtmlWebpackPlugin({template: 'app/index.html'}),
   ]
 };
 
