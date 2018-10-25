@@ -41,7 +41,7 @@ const config = {
       },
       {
         test: /\.worker\.js$/,
-        use: {loader: 'worker-loader'}
+        use: ['babel-loader', 'worker-loader']
       }
     ]
   },
