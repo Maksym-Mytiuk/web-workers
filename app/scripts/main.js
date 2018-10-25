@@ -1,6 +1,6 @@
-'use strict';
 import composerUrl from "./modules/composer-url.js";
 import CreateWorker from "./modules/create-worker.js";
+import 'whatwg-fetch';
 
 document.addEventListener('DOMContentLoaded', () => {
   main();

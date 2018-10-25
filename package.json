@@ -39,5 +39,8 @@
 		"webpack-dev-server": "^3.1.9",
 		"worker-loader": "^2.0.0",
 		"workerize-loader": "^1.0.4"
+	},
+	"dependencies": {
+		"whatwg-fetch": "^3.0.0"
 	}
 }
