@@ -1,0 +1,46 @@
+{
+	"name": "web-workers",
+	"version": "1.0.0",
+	"description": "Web Workers",
+	"main": "index.js",
+	"scripts": {
+		"dev": "webpack-dev-server --mode development --open",
+		"build": "webpack --mode production"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Maksym-Mytiuk/web-workers.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Maksym-Mytiuk/web-workers/issues"
+	},
+	"homepage": "https://github.com/Maksym-Mytiuk/web-workers#readme",
+	"devDependencies": {
+		"autoprefixer": "^9.2.1",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-stage-3": "^6.24.1",
+		"clean-webpack-plugin": "^0.1.19",
+		"css-loader": "^1.0.0",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"html-webpack-plugin": "^3.2.0",
+		"node-sass": "^4.9.3",
+		"path": "^0.12.7",
+		"postcss-loader": "^3.0.0",
+		"postcss-preset-env": "^6.1.2",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"webpack": "^4.20.2",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.9",
+		"worker-loader": "^2.0.0",
+		"workerize-loader": "^1.0.4"
+	},
+	"dependencies": {
+		"whatwg-fetch": "^3.0.0"
+	}
+}
